@@ -8,8 +8,8 @@ public class DVD extends Library{
 	@Override
 	public double fine() {
 		//60 days free 
-		if (getLateDate() >= 60 && getLateDate() !=0) {	//Advanced tickets purchased 10 or more days
-			fine = getLateDate() * 0.5;
+		if (getLateDate() >= 60 && getLateDate() !=0) {	
+			return fine = (getLateDate() - 60)* 0.5;
 		} 
 		return fine;
 	}

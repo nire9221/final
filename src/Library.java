@@ -9,8 +9,7 @@ public abstract class Library {
 	protected String status;  //available or reserved 
 	protected String checkInDate;  //yyyy-mm-dd
 	protected String returnDate; //yyyy-mm-dd
-	double fine = getLateDate() * 0.5; //50 cents per day, 30 days free 
-	int daysLate; 
+	double fine; //50 cents per day, 30 days free 
 	double total;
 
 	
@@ -27,7 +26,7 @@ public abstract class Library {
 		this.contentType = contentType;
 	}
 	public String getStatus() {
-		return "The item" + title + contentType + " is currently " + status;
+		return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
@@ -53,7 +52,7 @@ public abstract class Library {
 	}
 
 	public String Total() {
-		total = (double) (daysLate * fine());
+		total = (double) (fine());
 		String formattedPrice = NumberFormat.getCurrencyInstance().format(total);
 		return formattedPrice;
 	}
@@ -66,9 +65,11 @@ public abstract class Library {
 	}
 	
 	public String toString() {
-		return  "You borrowed " + title + contentTypeString() + "on " + getCheckInDate() + " and returned " + getReturnDate() + ". there will be charged" + Total();
+		if (status == "reserved") {
+			return "The item " + title +" " + contentTypeString()  + " is currently " + status;
+		}
+		return  "You borrowed " + title + " "+ contentTypeString() + " on " + getCheckInDate() + " and returned " + getReturnDate() + ". There will be charged " + Total() + " late fee";
 	}
-	
 	
 	
 }

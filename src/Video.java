@@ -8,8 +8,8 @@ public class Video extends Library {
 	@Override
 	public double fine() {
 		//90 days free
-		if (getLateDate() >= 90 && getLateDate() !=0) {	//Advanced tickets purchased 10 or more days
-			fine = getLateDate() * 0.5;
+		if (getLateDate() >= 90 && getLateDate() !=0) {
+			return fine = (getLateDate() - 90) * 0.5;
 		} 
 		return fine;
 	}

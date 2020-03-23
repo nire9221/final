@@ -7,14 +7,16 @@ public class Magazines extends Library{
 
 	@Override
 	public double fine() {
-		if (getLateDate() >= 30 && getLateDate() !=0) {	//Advanced tickets purchased 10 or more days
-			fine = getLateDate() * 0.5;
+		if (getLateDate() >= 30 && getLateDate() !=0) {	
+			return fine = (getLateDate() - 30) * 0.5;
 		} 
 		return fine;
 	}
 
 	@Override
 	public String contentTypeString() {
-		return "Magazine";
+		if (contentType == 2) {
+		}
+		return "Magazine"; 
 	}
 }
